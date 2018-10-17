@@ -13,8 +13,10 @@ const DEFAULT_PROPERTIES = {
       const traitValue = traitValues[
         Math.floor(Math.random() * traitValues.length)
       ];
+
       traits.push({ traitType, traitValue });
     });
+
     return traits;
   }
 };
