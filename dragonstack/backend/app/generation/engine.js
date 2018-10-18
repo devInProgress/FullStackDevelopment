@@ -1,4 +1,5 @@
 import Generation from './index.js';
+import GenerationTable from './table';
 
 class GenerationEngine {
   constructor() {
@@ -17,6 +18,7 @@ class GenerationEngine {
   buildNewGeneration() {
     this.generation = new Generation();
     console.log('new generation', this.generation);
+    GenerationTable.storeGeneration(this.generation);
 
     this.timer = setTimeout(
       () => this.buildNewGeneration(),
