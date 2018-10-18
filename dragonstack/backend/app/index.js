@@ -1,13 +1,16 @@
 import GenerationEngine from './generation/engine.js';
 import express from 'express';
+import dragonRouter from './api/dragon';
+import generationRouter from './api/generation';
 
 const engine = new GenerationEngine();
 const app = express();
 
-engine.start();
+app.locals.engine = engine;
 
-app.get('/dragon/new', (req, res) => {
-  res.json({ dragon: engine.generation.newDragon() });
-});
+app.use('/dragon', dragonRouter);
+app.use('/generation', generationRouter);
+
+engine.start();
 
 module.exports = app; 
